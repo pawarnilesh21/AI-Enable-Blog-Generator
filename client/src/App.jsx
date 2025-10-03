@@ -27,7 +27,6 @@ const App = () => {
           <Route path='ListBlog' element ={<ListBlog/>}/>   
           <Route path='Comments' element ={<Comments/>}/>   
 
-
         </Route>
       </Routes> 
     </div>
