@@ -18,7 +18,7 @@ export const AppProvider=({children})=>{
 
     const fetchBlogs=async()=>{
         try {
-            const {data}= await axios.get('/api/blog/all')
+            const {data}= await axios.get(`${import.meta.env.VITE_BASE_URL}/api/blog/all`)
             data.success ? setBlogs(data.blogs) :toast.error(data.message)
 
 

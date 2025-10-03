@@ -23,7 +23,7 @@ const Blog = () => {
 
   const fetchBlogData=async ()=>{
    try {
-      const {data}=await axios.get(`/api/blog/${id}`)
+      const {data}=await axios.get(`${import.meta.env.VITE_BASE_URL}/api/blog/${id}`)
       data.success ? setData(data.blog) :toast.error(data.message)
    } catch (error) {
     toast.error(error.message)
@@ -46,7 +46,7 @@ const Blog = () => {
 //pilot suggestion
     const fetchComments = async () => {
         try {
-            const { data } = await axios.post('/api/blog/comments', { blogId: id });
+            const { data } = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/blog/comments`, { blogId: id });
             if (data.success) {
                 setComments(Array.isArray(data.comments) ? data.comments : []);
             } else {
@@ -91,7 +91,7 @@ const Blog = () => {
   const addComment=async (e)=>{
     e.preventDefault()
     try {
-      const {data} =await axios.post('/api/blog/add-comment',{blog:id,name,content})
+      const {data} =await axios.post(`${import.meta.env.VITE_BASE_URL}/api/blog/add-comment`,{blog:id,name,content})
       if(data.success){
         toast.success(data.message)
         setName('')

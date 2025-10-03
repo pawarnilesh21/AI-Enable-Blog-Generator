@@ -14,7 +14,7 @@ const CommentTableItem = ({comment, fetchComments}) => {
     const {axios}=useAppContext()
     const approveComment=async ()=>{
         try {
-            const {data} =await axios.post('/api/admin/approve-comment',{id:_id})
+            const {data} =await axios.post(`${import.meta.env.VITE_BASE_URL}/api/admin/approve-comment`,{id:_id})
             if(data.success){
                 toast.success(data.message)
                 fetchComments()
@@ -30,7 +30,7 @@ const CommentTableItem = ({comment, fetchComments}) => {
         try {
             const confirm=window.confirm("Are You Sure you want to delete this commandd")
             if(!confirm) return;
-            const {data} =await axios.post('/api/admin/delete-comment',{id:_id})
+            const {data} =await axios.post(`${import.meta.env.VITE_BASE_URL}/api/admin/delete-comment`,{id:_id})
             if(data.success){
                 toast.success(data.message)
                 fetchComments()

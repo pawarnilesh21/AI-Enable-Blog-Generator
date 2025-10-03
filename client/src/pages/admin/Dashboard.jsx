@@ -20,7 +20,7 @@ const Dashboard = () => {
     const fetchDashboard=async ()=>{
        try {
          setDashboardData(dashboard_data)
-         const {data}=await axios.get('/api/admin/dashboard')
+         const {data}=await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/dashboard`)
          data.success ? setDashboardData(data.dashboardData) : toast.error(data.message)
 
 

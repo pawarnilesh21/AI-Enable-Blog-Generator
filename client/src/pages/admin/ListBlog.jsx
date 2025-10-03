@@ -10,7 +10,7 @@ const ListBlog = () => {
   const {axios} =useAppContext()
   const fetchBlogs=async ()=>{
     try {
-      const {data} =await axios.get('/api/admin/blogs')
+      const {data} =await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/blogs`)
       if(data.success){
         setBlogs(data.blogs)
       }else{
